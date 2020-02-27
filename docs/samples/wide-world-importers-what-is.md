@@ -16,11 +16,11 @@ ms.contentlocale: ru-RU
 ms.lasthandoff: 02/08/2020
 ms.locfileid: "68794607"
 ---
-# <a name="wide-world-importers-sample-databases-for-microsoft-sql"></a>Примеры баз данных для широкого мира импорта для Microsoft SQL
+# <a name="wide-world-importers-sample-databases-for-microsoft-sql"></a>Демострационная база данных Wide World Importers для Microsoft SQL
 [!INCLUDE[appliesto-ss-asdb-xxxx-xxx-md](../includes/appliesto-ss-asdb-xxxx-xxx-md.md)]
 В этом обзор вымышленных средств импорта мирового уровня компании и рабочих процессов, которые решаются в образцах баз данных WideWorldImporters для SQL Server и базы данных SQL Azure.  
 
-Мировые импортеры (WWI) — это оптовое средство импорта и распространения новизнаных товаров, работающее в области Сан-Франциско.
+Wide World Importers (WWI) — это оптовое средство импорта и распространения новизнаных товаров, работающее в области Сан-Франциско.
 
 Клиенты WWI, как правило, представляют собой компании, которые передаются сотрудникам. WWI продает клиентам розничной торговли по США включая специальные магазины, Супермаркетс, вычислительные магазины, таурист притяжения и некоторые лица. WWI также продает другим вхолесалерс через сеть агентов, повышающих продукты от имени WWI. Хотя все клиенты WWI в настоящее время основаны на США, компания намеревается передавать их для расширения в другие страны.
 
@@ -64,4 +64,4 @@ SQL Server Analysis Services используется для создания м
 
 Лицензия для образца базы данных и образца кода описана здесь: [License. txt](https://github.com/Microsoft/sql-server-samples/blob/master/license.txt)
 
-Образец базы данных включает общедоступные данные, загруженные из data.gov и естественного Еарсдата. Условия использования:[https://www.naturalearthdata.com/about/terms-of-use/](https://www.naturalearthdata.com/about/terms-of-use/)
+Демонстрационная база данных включает общедоступные данные, загруженные с data.gov и Natural EarthData. Условия использования:[https://www.naturalearthdata.com/about/terms-of-use/](https://www.naturalearthdata.com/about/terms-of-use/)

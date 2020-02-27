@@ -29,11 +29,11 @@ ms.locfileid: "68104289"
 
 Различные типы таблиц организованы в три схемы.
 
-|схема|Description|
+|Схема|Описание|
 |-----------------------------|---------------------|
-|Измерение|Таблицы измерений.|
-|Факты|Таблицы фактов.|  
-|Интеграция|Промежуточные таблицы и другие объекты, необходимые для ETL.|  
+|Dimension|Таблицы измерений.|
+|Fact|Таблицы фактов.|  
+|Integration|Промежуточные таблицы и другие объекты, необходимые для ETL.|  
 
 ## <a name="tables"></a>Таблицы
 
@@ -46,12 +46,12 @@ WideWorldImportersDW содержит следующие таблицы изме
 |Таблица|Исходные таблицы|
 |-----------------------------|---------------------|
 |City|`Application.Cities`, `Application.StateProvinces`, `Application.Countries`.|
-|Клиент|`Sales.Customers`, `Sales.BuyingGroups`, `Sales.CustomerCategories`.|
-|Дата|Новая таблица со сведениями о датах, включая финансовый год (на основе 1 ноября начала финансового года).|
+|Customer|`Sales.Customers`, `Sales.BuyingGroups`, `Sales.CustomerCategories`.|
+|Date|Новая таблица со сведениями о датах, включая финансовый год (на основе 1 ноября начала финансового года).|
 |Employee|`Application.People`.|
-|стоккитем|`Warehouse.StockItems`, `Warehouse.Colors`, `Warehouse.PackageType`.|
-|Поставщик|`Purchasing.Suppliers`, `Purchasing.SupplierCategories`.|
-|пайментмесод|`Application.PaymentMethods`.|
+|StockItem|`Warehouse.StockItems`, `Warehouse.Colors`, `Warehouse.PackageType`.|
+|Supplier|`Purchasing.Suppliers`, `Purchasing.SupplierCategories`.|
+|PaymentMethod|`Application.PaymentMethods`.|
 |TransactionType|`Application.TransactionTypes`.|
 
 ### <a name="fact-tables"></a>Таблицы фактов
@@ -60,12 +60,12 @@ WideWorldImportersDW имеет следующие таблицы фактов. 
 
 |Таблица|Исходные таблицы|Образец аналитики|
 |-----------------------------|---------------------|---------------------|
-|Порядок|`Sales.Orders`перетаскивани`Sales.OrderLines`|Продажи продавцов, средств выбора и упаковки и времени на выбор заказов. Кроме того, в небольших складских ситуациях, ведущих к обратным заказам.|
-|Sale|`Sales.Invoices`перетаскивани`Sales.InvoiceLines`|Даты продаж, даты доставки, рентабельность с течением времени, рентабельность по менеджеру по продажам.|
+|Order|`Sales.Orders` перетаскивани `Sales.OrderLines`|Продажи продавцов, средств выбора и упаковки и времени на выбор заказов. Кроме того, в небольших складских ситуациях, ведущих к обратным заказам.|
+|Sale|`Sales.Invoices` перетаскивани `Sales.InvoiceLines`|Даты продаж, даты доставки, рентабельность с течением времени, рентабельность по менеджеру по продажам.|
 |Purchase|`Purchasing.PurchaseOrderLines`|Ожидаемое и фактическое время опережения|
-|транзакция:|`Sales.CustomerTransactions`перетаскивани`Purchasing.SupplierTransactions`|Измерение дат проблем и дат финализации и сумм.|
-|Перемещать|`Warehouse.StockTransactions`|Перемещения с течением времени.|
-|Удерживаемые акции|`Warehouse.StockItemHoldings`|Уровни и стоимость запасов в наличии.|
+|Transaction|`Sales.CustomerTransactions` перетаскивани `Purchasing.SupplierTransactions`|Измерение дат проблем и дат финализации и сумм.|
+|Movement|`Warehouse.StockTransactions`|Перемещения с течением времени.|
+|Stock Holding|`Warehouse.StockItemHoldings`|Уровни и стоимость запасов в наличии.|
 
 ## <a name="stored-procedures"></a>Хранимые процедуры
 
@@ -77,7 +77,7 @@ WideWorldImportersDW имеет следующие таблицы фактов. 
 
 Эти процедуры используются для настройки образца. Они используются для применения функций Enterprise Edition к стандартной версии примера, добавления Polybase и повторного заполнения ETL.
 
-|Процедура|Назначение|
+|Хранимая процедура|Назначение|
 |-----------------------------|---------------------|
 |Configuration_ApplyPartitionedColumnstoreIndexing|Применяет секционирование и индексы columnstore для таблиц фактов.|
 |Configuration_ConfigureForEnterpriseEdition|Применяет секционирование, индексацию columnstore и в памяти.|
@@ -97,7 +97,7 @@ WideWorldImportersDW имеет следующие таблицы фактов. 
 
 Процедуры для настройки последовательностей в базе данных.
 
-|Процедура|Назначение|
+|Хранимая процедура|Назначение|
 |-----------------------------|---------------------|
-|ресидаллсекуенцес|Вызывает процедуру `ReseedSequenceBeyondTableValue` для всех последовательностей.|
-|ресидсекуенцебэйондтаблевалуе|Используется для перемещения следующего значения последовательности после значения в любой таблице, использующей ту же последовательность. (Например, `DBCC CHECKIDENT` для столбцов идентификаторов, эквивалентных для последовательностей, но в потенциально нескольких таблицах.)|
+|ReseedAllSequences|Вызывает процедуру `ReseedSequenceBeyondTableValue` для всех последовательностей.|
+|ReseedSequenceBeyondTableValue|Используется для перемещения следующего значения последовательности после значения в любой таблице, использующей ту же последовательность. (Например, `DBCC CHECKIDENT` для столбцов идентификаторов, эквивалентных для последовательностей, но в потенциально нескольких таблицах.)|
